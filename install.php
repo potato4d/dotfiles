@@ -29,3 +29,6 @@ foreach ($dotfiles as $key => $dotfile) {
 }
 
 println(success("Complete! ") . bold(speedgun($start_time) . "ms") );
+
+exec("source ~/.bash_profile");
+exec("source ~/.bashrc");
