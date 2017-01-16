@@ -1,11 +1,8 @@
 #!/usr/bin/env php
 <?php
-$home = $_SERVER["HOME"] . "/dotfiles";
-$move = "cd " . $home;
-
+require_once __DIR__ . "/service/initialize.php";
 $dotfiles = [];
 echo "Start Install...\n";
-require_once __DIR__ . "/service/initialize.php";
 
 println("Get dotfiles...\n");
 exec("ls -a ./config/", $dotfiles);
