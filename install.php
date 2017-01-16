@@ -25,7 +25,7 @@ foreach ($dotfiles as $key => $dotfile) {
   println(success("  from: ") . $_SERVER["HOME"] . "/config/" . $dotfile);
   println(success("    to: ") . $_SERVER["HOME"] .    "/"     . $dotfile . "\n");
   exec("rm ~/" . $dotfile);
-  exec("ln -sn " . $home . "/config/" . $dotfile . " ~/" . $dotfile);
+  exec("ln -s " . $home . "/config/" . $dotfile . " ~/" . $dotfile);
 }
 
 println(success("Complete! ") . bold(speedgun($start_time) . "ms") );
