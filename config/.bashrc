@@ -3,6 +3,7 @@ export PATH="/usr/local/opt/nodenv/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # 誤字マン
 alias gti="git"
@@ -18,7 +19,6 @@ alias aws-console="open https://ap-northeast-1.console.aws.amazon.com/console/ho
 alias s3="open https://console.aws.amazon.com/s3/home?region=ap-northeast-1"
 alias lambda="open https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1"
 
-alias http="open http://localhost:8000 & php -S localhost:8000"
 alias term='open -a "/Applications/Utilities/Terminal.app/"'
 
 eval "$(nodenv init -)"
