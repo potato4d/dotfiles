@@ -27,22 +27,59 @@ alias lambda="open https://ap-northeast-1.console.aws.amazon.com/lambda/home?reg
 alias term='open -a "/Applications/Utilities/Terminal.app/"'
 alias pcheckout='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias pdbranch='git branch -D `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
-alias ll='ls -la'
-alias l='ls -a'
+
+eval `dircolors ~/.colorrc`
+alias ls='ls --color=auto'
+alias ll='ls -la --color=auto'
+alias l='ls -a --color=auto'
 
 function ggdb(){
   git branch -D $(git branch | grep $1)
 }
 
 function his(){
-  eval $(bh | grep $1 | peco)
+  $a=$(bh | grep $1 | peco)
+  echo $a
+  echo $a >> ~/.bash_history
+  eval $a
 }
 
 function jurl(){
   curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d $1 $2
 }
 
+function padd(){
+  git add $(git status | grep "modified" | sed "s/modified://" | peco)
+}
+
+export HISTCONTROL="ignoredups"
+peco-history() {
+    local NUM=$(history | wc -l)
+    local FIRST=$((-1*(NUM-1)))
+
+    if [ $FIRST -eq 0 ] ; then
+        history -d $((HISTCMD-1))
+        echo "No history" >&2
+        return
+    fi  
+
+    local CMD=$(fc -l $FIRST | sort -k 2 -k 1nr | uniq -f 1 | sort -nr | sed -E 's/^[0-9]+[[:blank:]]+//' | peco | head -n 1)
+
+    if [ -n "$CMD" ] ; then
+        history -s $CMD
+
+        if type osascript > /dev/null 2>&1 ; then
+            (osascript -e 'tell application "System Events" to keystroke (ASCII character 30)' &)
+        fi  
+    else
+        history -d $((HISTCMD-1))
+    fi  
+}
+bind -x '"\C-r":peco-history'
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+nvm use v8.0.0
 
 eval "$(rbenv init -)"
 eval "$(phpenv init -)"
