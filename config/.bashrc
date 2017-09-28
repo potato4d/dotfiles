@@ -38,10 +38,7 @@ function ggdb(){
 }
 
 function his(){
-  $a=$(bh | grep $1 | peco)
-  echo $a
-  echo $a >> ~/.bash_history
-  eval $a
+  eval $(bh | grep $1 | peco)
 }
 
 function jurl(){
