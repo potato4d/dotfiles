@@ -17,3 +17,10 @@ fi
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
+export PATH="/usr/local/sbin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/potato4d/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/Users/potato4d/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/potato4d/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/potato4d/Downloads/google-cloud-sdk/completion.bash.inc'; fi

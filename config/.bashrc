@@ -37,6 +37,15 @@ function ggdb(){
   git branch -D $(git branch | grep $1)
 }
 
+function devtomaster(){
+  git reset --hard
+  git checkout master
+  git pull
+  git checkout develop
+  git rebase master
+  git push
+}
+
 function his(){
   eval $(bh | grep $1 | peco)
 }
@@ -76,8 +85,15 @@ bind -x '"\C-r":peco-history'
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-nvm use v8.0.0
+# nvm use v8.0.0
 
 eval "$(rbenv init -)"
 eval "$(phpenv init -)"
 eval "$(pyenv init -)"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
