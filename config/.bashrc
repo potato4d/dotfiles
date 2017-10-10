@@ -28,7 +28,6 @@ alias term='open -a "/Applications/Utilities/Terminal.app/"'
 alias pcheckout='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias pdbranch='git branch -D `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 
-eval `dircolors ~/.colorrc`
 alias ls='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias l='ls -a --color=auto'
@@ -67,7 +66,7 @@ peco-history() {
         history -d $((HISTCMD-1))
         echo "No history" >&2
         return
-    fi  
+    fi
 
     local CMD=$(fc -l $FIRST | sort -k 2 -k 1nr | uniq -f 1 | sort -nr | sed -E 's/^[0-9]+[[:blank:]]+//' | peco | head -n 1)
 
@@ -76,24 +75,27 @@ peco-history() {
 
         if type osascript > /dev/null 2>&1 ; then
             (osascript -e 'tell application "System Events" to keystroke (ASCII character 30)' &)
-        fi  
+        fi
     else
         history -d $((HISTCMD-1))
-    fi  
+    fi
 }
 bind -x '"\C-r":peco-history'
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# nvm use v8.0.0
+if hash rbenv 2>/dev/null; then
+  eval "$(rbenv init -)"
+fi
 
-eval "$(rbenv init -)"
-eval "$(phpenv init -)"
-eval "$(pyenv init -)"
+if hash phpenv 2>/dev/null; then
+  eval "$(phpenv init -)"
+fi
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /Users/potato4d/.nvm/versions/node/v7.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+if hash pyenv 2>/dev/null; then
+  eval "$(pyenv init -)"
+fi
+
+if hash dircolors 2>/dev/null; then
+  eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
+fi
