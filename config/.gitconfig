@@ -1,0 +1,11 @@
+[core]
+	excludesfile = /Users/potato4d/.gitignore_global
+	editor = micro
+[include]
+	path = ~/.gitconfig.local
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = false
+[alias]
+	psuh = push
