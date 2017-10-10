@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/potato4d/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = micro
 [include]
 	path = ~/.gitconfig.local
