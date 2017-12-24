@@ -12,6 +12,7 @@ LC_ALL="en_US.UTF-8"
 
 HISTSIDE=5000000
 
+alias ssh="ssh -A"
 alias gti="git"
 alias h="cat ~/.bash_history | peco | eval"
 alias bh="cat ~/.bash_history"
@@ -98,3 +99,5 @@ fi
 if hash dircolors 2>/dev/null; then
   eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 fi
+
+eval "$(direnv hook bash)"

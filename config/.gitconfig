@@ -9,3 +9,4 @@
 	gpgsign = false
 [alias]
 	psuh = push
+	ci = commit
