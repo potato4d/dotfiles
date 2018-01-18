@@ -22,15 +22,25 @@ alias s="source ~/.bashrc"
 alias e="micro \$(git ls-files | peco)"
 alias t="open https://twitter.com"
 alias aws-console="open https://ap-northeast-1.console.aws.amazon.com/console/home?region=ap-northeast-1"
-alias s3="open https://console.aws.amazon.com/s3/home?region=ap-northeast-1"
 alias lambda="open https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1"
 alias term='open -a "/Applications/Utilities/Terminal.app/"'
-alias pcheckout='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
+alias pc='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
+alias pcheckout='pc'
 alias pdbranch='git branch -D `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
-
+alias kp="touch .gitkeep"
 alias ls='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias l='ls -a --color=auto'
+
+function p(){
+  c
+  cd potato4d
+  cd $1
+}
+
+function esa(){
+  open $(cat ~/.esa_teams | peco | sed -e "s/^/https:\/\//" | sed -E "s/$/.esa.io/")
+}
 
 function ggdb(){
   git branch -D $(git branch | grep $1)
