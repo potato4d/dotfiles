@@ -107,7 +107,7 @@ if hash pyenv 2>/dev/null; then
 fi
 
 if hash dircolors 2>/dev/null; then
-  [ -s '~/.dircolors-solarized/dircolors.256dark'] && eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
+  eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 fi
 
 eval "$(direnv hook bash)"
