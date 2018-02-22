@@ -32,6 +32,10 @@ alias ls='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias l='ls -a --color=auto'
 
+function cappy () {
+  cat $1 | pbcopy
+}
+
 function p(){
   c
   cd potato4d
