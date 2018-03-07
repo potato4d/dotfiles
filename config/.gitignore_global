@@ -5,3 +5,4 @@ node_modules/
 .deploy*/
 npm-debug.log
 .idea
+.envrc

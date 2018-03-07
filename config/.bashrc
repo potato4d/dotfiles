@@ -21,6 +21,10 @@ alias d="cd ~/Desktop"
 alias s="source ~/.bashrc"
 alias e="micro \$(git ls-files | peco)"
 alias t="open https://twitter.com"
+
+alias g='cd $(ghq root)/$(ghq list | peco)'
+alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+
 alias aws-console="open https://ap-northeast-1.console.aws.amazon.com/console/home?region=ap-northeast-1"
 alias lambda="open https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1"
 alias term='open -a "/Applications/Utilities/Terminal.app/"'
