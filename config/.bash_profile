@@ -1,6 +1,7 @@
 source ~/.git-prompt.sh
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 export HISTFILESIZE=5000000
+HISTSIZE=50000000
 # In order for gpg to find gpg-agent, gpg-agent must be running, and there must be an env
 # variable pointing GPG to the gpg-agent socket. This little script, which must be sourced
 # in your shell's init script (ie, .bash_profile, .zshrc, whatever), will either start

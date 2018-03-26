@@ -12,3 +12,7 @@
 	ci = commit
 [ghq]
   root = ~/Desktop/Clients
+[diff "sketchtool"]
+  textconv = "sketchtool dump"
+  cachetextconv = true
+  binary = true
