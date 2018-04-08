@@ -116,6 +116,11 @@ alias l='ls -a --color=auto'
 
 alias docker_clean='docker image prune;docker container prune;docker volume prune'
 
+function md5 () {
+  php -r "echo md5(\"$1\");";
+  echo '';
+}
+
 function cappy () {
   cat $1 | pbcopy
 }
