@@ -106,8 +106,7 @@ alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias aws-console="open https://ap-northeast-1.console.aws.amazon.com/console/home?region=ap-northeast-1"
 alias lambda="open https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1"
 alias term='open -a "/Applications/Utilities/Terminal.app/"'
-alias pc='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
-alias pcheckout='pc'
+alias branch='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias pdbranch='git branch -D `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias kp="touch .gitkeep"
 alias ls='ls --color=auto'
@@ -131,11 +130,7 @@ function p(){
   cd $1
 }
 
-function esa(){
-  open $(cat ~/.esa_teams | peco | sed -e "s/^/https:\/\//" | sed -E "s/$/.esa.io/")
-}
-
-function ggdb(){
+function delbranch(){
   git branch -D $(git branch | grep $1)
 }
 
@@ -146,14 +141,6 @@ function devtomaster(){
   git checkout develop
   git rebase master
   git push
-}
-
-function his(){
-  eval $(bh | grep $1 | peco)
-}
-
-function jurl(){
-  curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d $1 $2
 }
 
 function padd(){

@@ -1,6 +1,6 @@
 <?php
 
-$home = $_SERVER["HOME"] . "/dotfiles";
+$home = $_SERVER["HOME"] . "/.dotfiles";
 $move = "cd " . $home;
 $start_time = microtime(true);
 
