@@ -1,1 +1,0 @@
-/tmp/copytest/.git-prompt.sh
