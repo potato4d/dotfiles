@@ -14,74 +14,8 @@ HISTSIZE=5000000
 
 # Git
 
-alias gcl='git clone'
-alias ga='git add'
-alias grm='git rm'
-alias gap='git add -p'
-alias gall='git add -A'
-alias gf='git fetch --all --prune'
-alias gft='git fetch --all --prune --tags'
-alias gfv='git fetch --all --prune --verbose'
-alias gftv='git fetch --all --prune --tags --verbose'
-alias gus='git reset HEAD'
-alias gpristine='git reset --hard && git clean -dfx'
-alias gclean='git clean -fd'
-alias gm="git merge"
-alias gmv='git mv'
-alias g='git'
-alias get='git'
-alias gst='git status'
-alias gs='git status'
-alias gss='git status -s'
-alias gsu='git submodule update --init --recursive'
-alias gl='git pull'
-alias glum='git pull upstream master'
-alias gpr='git pull --rebase'
-alias gpp='git pull && git push'
-alias gup='git fetch && git rebase'
-alias gp='git push'
-alias gpo='git push origin'
-alias gpu='git push --set-upstream'
-alias gpom='git push origin master'
-alias gr='git remote'
-alias grv='git remote -v'
-alias gra='git remote add'
-alias gd='git diff'
-alias gdv='git diff -w "$@" | vim -R -'
-alias gc='git commit -v'
-alias gca='git commit -v -a'
-alias gcm='git commit -v -m'
-alias gcam="git commit -v -am"
-alias gci='git commit --interactive'
-alias gb='git branch'
-alias gba='git branch -a'
-alias gbt='git branch --track'
-alias gbm='git branch -m'
-alias gbd='git branch -d'
-alias gbD='git branch -D'
-alias gcount='git shortlog -sn'
-alias gcp='git cherry-pick'
-alias gco='git checkout'
-alias gcom='git checkout master'
-alias gcb='git checkout -b'
-alias gcob='git checkout -b'
-alias gct='git checkout --track'
-alias gexport='git archive --format zip --output'
-alias gdel='git branch -D'
-alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
-alias gll='git log --graph --pretty=oneline --abbrev-commit'
-alias gg="git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative"
-alias ggs="gg --stat"
-alias gsl="git shortlog -sn"
-alias gwc="git whatchanged"
-alias gt="git tag"
-alias gta="git tag -a"
-alias gtd="git tag -d"
-alias gtl="git tag -l"
-# From http://blogs.atlassian.com/2014/10/advanced-git-aliases/
-# Show commits since last pull
+alias pc='git checkout $(git branch | peco)'
 alias gnew="git log HEAD@{1}..HEAD@{0}"
-# Add uncommitted and unstaged changes to the last commit
 alias gcaa="git commit -a --amend -C HEAD"
 alias ggui="git gui"
 alias gcsam="git commit -S -am"
@@ -103,15 +37,10 @@ alias t="open https://twitter.com"
 alias g='cd $(ghq root)/$(ghq list | peco)'
 alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 
-alias aws-console="open https://ap-northeast-1.console.aws.amazon.com/console/home?region=ap-northeast-1"
-alias lambda="open https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1"
-alias term='open -a "/Applications/Utilities/Terminal.app/"'
-alias branch='git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
-alias pdbranch='git branch -D `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`'
 alias kp="touch .gitkeep"
-alias ls='ls --color=auto'
-alias ll='ls -la --color=auto'
-alias l='ls -a --color=auto'
+alias ls='ls -lha'
+# alias ll='ls -la -G'
+# alias l='ls -a -G'
 
 alias docker_clean='docker image prune;docker container prune;docker volume prune'
 
