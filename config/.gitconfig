@@ -1,3 +1,6 @@
+[user]
+	name = "Takuma HANATANI"
+	email = "mail@potato4d.me"
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = micro
