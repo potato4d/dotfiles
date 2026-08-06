@@ -1,0 +1,45 @@
+# Shared zsh configuration.
+
+alias gti='git'
+
+function g() {
+  emulate -L zsh
+
+  if ! (( $+commands[ghq] && $+commands[peco] )); then
+    print -u2 'g requires both ghq and peco.'
+    return 1
+  fi
+
+  local repository
+  repository="$(ghq list --full-path | peco --query "${1:-}")"
+  [[ -n $repository ]] || return 0
+
+  builtin cd -- "$repository"
+}
+
+function pc() {
+  emulate -L zsh
+
+  if ! (( $+commands[git] && $+commands[peco] )); then
+    print -u2 'pc requires both git and peco.'
+    return 1
+  fi
+
+  local branch
+  branch="$(git branch --sort=-committerdate --format='%(refname:short)' | peco --query "${1:-}")"
+  [[ -n $branch ]] || return 0
+
+  git checkout "$branch"
+}
+
+autoload -Uz add-zsh-hook vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '(%b)'
+zstyle ':vcs_info:*' enable git
+
+function _dotfiles_update_prompt() {
+  vcs_info
+  PROMPT="%n@%m ${vcs_info_msg_0_:-(-)} %1~ % "
+}
+
+add-zsh-hook precmd _dotfiles_update_prompt
